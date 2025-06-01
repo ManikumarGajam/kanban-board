@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Responsive Kanban Board with Animations</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="C:\frontend practice\javascript\styles.css">
+</head>
+<body>
+
+<header>
+  <h1>Kanban Board</h1>
+  <p>Drag & drop tasks between columns. Add new tasks to organize your workflow efficiently.</p>
+</header>
+
+<div id="inputContainer">
+  <input type="text" id="newTask" placeholder="Enter a new task..." />
+  <button id="addTaskBtn">Add Task</button>
+</div>
+
+<div class="board">
+  <div class="column" id="todo" ondragover="allowDrop(event)" ondrop="drop(event)">
+    <h2>To Do</h2>
+    <div class="empty-message">No tasks here</div>
+    <div class="drop-zone">Drop here to remove task 🗑️</div>
+  </div>
+  <div class="column" id="inprogress" ondragover="allowDrop(event)" ondrop="drop(event)">
+    <h2>In Progress</h2>
+    <div class="empty-message">No tasks here</div>
+    <div class="drop-zone">Drop here to remove task 🗑️</div>
+  </div>
+  <div class="column" id="done" ondragover="allowDrop(event)" ondrop="drop(event)">
+    <h2>Done</h2>
+    <div class="empty-message">No tasks here</div>
+    <div class="drop-zone">Drop here to remove task 🗑️</div>
+  </div>
+</div>
+<script src=""></script>
+</body>
+</html>

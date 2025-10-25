@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Call speakWelcome on page load
-  speakWelcome();
 
   // Optional: add a button to replay the welcome message anytime
   const replayBtn = document.createElement('button');

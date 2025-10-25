@@ -10,12 +10,12 @@ document.addEventListener('DOMContentLoaded', () => {
     window.speechSynthesis.speak(msg);
   }
 
-  // Call speakWelcome on page load
+  // REMOVED: speakWelcome(); - No longer auto-plays on load
 
-  // Optional: add a button to replay the welcome message anytime
+  // Button to play instructions when clicked
   const replayBtn = document.createElement('button');
-  replayBtn.textContent = '🔊 Replay Instructions';
-  replayBtn.setAttribute('aria-label', 'Replay instructions');
+  replayBtn.textContent = '🔊 Play Instructions';  // Changed text
+  replayBtn.setAttribute('aria-label', 'Play instructions');
   replayBtn.style.cssText = `
     position: fixed;
     bottom: 20px;
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
   `;
   replayBtn.addEventListener('mouseenter', () => replayBtn.style.backgroundColor = '#4338ca');
   replayBtn.addEventListener('mouseleave', () => replayBtn.style.backgroundColor = '#4f46e5');
-  replayBtn.addEventListener('click', speakWelcome);
+  replayBtn.addEventListener('click', speakWelcome);  // Only plays when clicked
   document.body.appendChild(replayBtn);
 
   const addTaskBtn = document.getElementById('addTaskBtn');
@@ -143,6 +143,16 @@ dropZones.forEach(zone => {
     const task = document.getElementById(taskId);
     if (task) {
       task.remove();
+      // Need to define updateEmptyMessages in this scope or move it globally
+      const updateEmptyMessages = () => {
+        const columns = document.querySelectorAll('.column');
+        columns.forEach(column => {
+          const tasks = column.querySelectorAll('.task');
+          const emptyMessage = column.querySelector('.empty-message');
+          if (!emptyMessage) return;
+          emptyMessage.style.display = (tasks.length === 0) ? 'flex' : 'none';
+        });
+      };
       updateEmptyMessages();
     }
   });
